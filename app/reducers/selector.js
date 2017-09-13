@@ -16,7 +16,7 @@ const data = (
     case UPDATE_ENTIRE_LIST:
       return {
         ...state,
-        totalList: action.breeds.slice(),
+        totalList: action.list.slice(),
       };
     case UPDATE_CURRENT_LIST:
       return {

@@ -11,9 +11,9 @@ const cx = classNames.bind(styles);
 
 class SelectorContainer extends Component {
   getButtons() {
-    const { breeds } = this.props;
-    return breeds.map((breed) => {
-      return (<Button buttonText={breed} />);
+    const { curList } = this.props;
+    return curList.map((type) => {
+      return (<Button buttonText={type} />);
     });
   }
   render() {
