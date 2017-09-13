@@ -1,4 +1,4 @@
-# Renew Front-end Code Test
+# Front-end Code Test
 
 ![Dogs](./readme-images/Dogs.png)
 
