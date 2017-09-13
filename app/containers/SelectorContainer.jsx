@@ -35,7 +35,7 @@ SelectorContainer.PropTypes = {
 
 function mapStateToProps(state) {
   return {
-    breeds: state.dogSelector.breeds,
+    curList: state.selector.curList,
   };
 }
 

@@ -1,22 +1,28 @@
-import { UPDATE_LIST } from 'actions/dogSelector';
+import { UPDATE_ENTIRE_LIST,
+         UPDATE_CURRENT_LIST,
+         UPDATE_SELECTED } from 'actions/selector';
 
 const data = (
   state = {
     maxNumBtns: 12,
     totalList: [],
     curList: [],
-    curData: undefined,
+    selectedData: undefined,
     imageLinks: [],
   },
   action,
 ) => {
   switch (action.type) {
-    case UPDATE_LIST:
+    case UPDATE_ENTIRE_LIST:
       return {
         ...state,
         totalList: action.breeds.slice(),
       };
-    case UPDATE_BREED:
+    case UPDATE_CURRENT_LIST:
+      return {
+        ...state,
+      };
+    case UPDATE_SELECTED:
       return {
         ...state,
       };

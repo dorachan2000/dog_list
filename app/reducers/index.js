@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
 import sample from 'reducers/sample';
-import dogSelector from 'reducers/dogSelector'
+import selector from 'reducers/selector'
 
 const rootReducer = combineReducers({
   sample,
-  dogSelector
+  selector
 });
 
 export default rootReducer;
