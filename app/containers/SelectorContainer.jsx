@@ -4,12 +4,16 @@ import classNames from 'classnames/bind';
 import { connect } from 'react-redux';
 
 import Button from 'components/Button';
-import * as sampleActions from 'actions/sample';
+import { fetchTypes } from 'actions/selector';
 import styles from './scss/sample.scss';
 
 const cx = classNames.bind(styles);
 
 class SelectorContainer extends Component {
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(fetchTypes());
+  }
   getButtons() {
     const { curList } = this.props;
     return curList.map((type) => {
@@ -18,7 +22,6 @@ class SelectorContainer extends Component {
   }
   render() {
     const buttons = this.getButtons();
-    const { name, updateTitleAction } = this.props
     return (
       <div className={cx('sample-container')}>
         <h1>This is a sample container</h1>
@@ -29,8 +32,8 @@ class SelectorContainer extends Component {
 }
 
 SelectorContainer.PropTypes = {
-  data: PropTypes.object,
-  performSampleAction: PropTypes.func,
+  curList: PropTypes.array,
+  dispatch: PropTypes.func,
 };
 
 function mapStateToProps(state) {
@@ -39,12 +42,13 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    updateTitleAction: () => {
-      dispatch(sampleActions.updateTitle('This is a different title'));
-    },
-  };
-}
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     updateTitleAction: () => {
+//       dispatch(sampleActions.updateTitle('This is a different title'));
+//     },
+//   };
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SelectorContainer);
+// export default connect(mapStateToProps, mapDispatchToProps)(SelectorContainer);
+export default connect(mapStateToProps)(SelectorContainer);

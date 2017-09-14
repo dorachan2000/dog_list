@@ -2,9 +2,9 @@ import { UPDATE_ENTIRE_LIST,
          UPDATE_CURRENT_LIST,
          UPDATE_SELECTED } from 'actions/selector';
 
+const MAX_NUM_BUTTONS = 12;
 const data = (
   state = {
-    maxNumBtns: 12,
     totalList: [],
     curList: [],
     selectedData: undefined,
@@ -16,11 +16,12 @@ const data = (
     case UPDATE_ENTIRE_LIST:
       return {
         ...state,
-        totalList: action.list.slice(),
+        totalList: action.types.slice(),
       };
     case UPDATE_CURRENT_LIST:
       return {
         ...state,
+        curList: state.totalList.slice(0, MAX_NUM_BUTTONS),
       };
     case UPDATE_SELECTED:
       return {
