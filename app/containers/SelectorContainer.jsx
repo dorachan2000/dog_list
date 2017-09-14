@@ -4,7 +4,8 @@ import classNames from 'classnames/bind';
 import { connect } from 'react-redux';
 
 import Button from 'components/Button';
-import { fetchTypes } from 'actions/selector';
+import ImageList from 'components/ImageList'
+import { fetchTypes, updateSelected, fetchImageLinks } from 'actions/selector';
 import styles from './scss/sample.scss';
 
 const cx = classNames.bind(styles);
@@ -15,17 +16,32 @@ class SelectorContainer extends Component {
     dispatch(fetchTypes());
   }
   getButtons() {
-    const { curList } = this.props;
-    return curList.map((type) => {
-      return (<Button buttonText={type} />);
+    const { curList, totalList, dispatch } = this.props;
+    return curList.map((id) => {
+      return (
+        <Button
+          key={id}
+          buttonText={totalList[id]}
+          onClick={() => {
+              dispatch(updateSelected(id));
+              dispatch(fetchImageLinks(id));
+            }
+          }
+        />);
     });
   }
   render() {
+    const { selectedData, totalList, imageLinks } = this.props;
+    console.log('i', imageLinks)
+    console.log('s', selectedData)
+    const selected = totalList[selectedData];
     const buttons = this.getButtons();
     return (
       <div className={cx('sample-container')}>
-        <h1>This is a sample container</h1>
+        <h1>Selected breed: {selected}</h1>
         {buttons}
+        <ImageList imageLinks={imageLinks} />
+
       </div>
     );
   }
@@ -34,11 +50,15 @@ class SelectorContainer extends Component {
 SelectorContainer.PropTypes = {
   curList: PropTypes.array,
   dispatch: PropTypes.func,
+  imageLinks: PropTypes.array,
 };
 
 function mapStateToProps(state) {
   return {
     curList: state.selector.curList,
+    totalList: state.selector.totalList,
+    selectedData: state.selector.selectedData,
+    imageLinks: state.selector.imageLinks,
   };
 }
 
