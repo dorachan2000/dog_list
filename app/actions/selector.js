@@ -35,7 +35,7 @@ export const fetchTypes = () => (dispatch, getState) => {
     });
 };
 
-export const fetchImageLinks = (id) => (dispatch, getState) => {
+export const fetchImageLinks = id => (dispatch, getState) => {
   const breedName = getState().selector.totalList[id];
   return fetch(`https://dog.ceo/api/breed/${breedName}/images`)
     .then(response => response.json())

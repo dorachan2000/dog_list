@@ -13,12 +13,14 @@ export default class ImageLinks extends Component {
   getImages() {
     const { imageLinks } = this.props;
     if (!imageLinks) return <div />;
+    else if (imageLinks.length === 0) return <div>No Images</div>;
     return imageLinks.map((link) => {
       return (
-        <div>{link}</div>
+        <img src={`${link}`} alt="dog" />
       );
     });
   }
+  // <div>{link}</div>
   render() {
     const images = this.getImages();
     return (
