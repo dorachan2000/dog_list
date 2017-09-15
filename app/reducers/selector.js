@@ -37,7 +37,7 @@ const data = (
     case UPDATE_IMG_LINKS:
       return {
         ...state,
-        imageLinks: action.links,
+        imageLinks: action.links.slice(),
       };
     default:
       return state;
