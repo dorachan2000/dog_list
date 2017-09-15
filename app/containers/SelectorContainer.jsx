@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import Button from 'components/Button';
 import ImageList from 'components/ImageList'
 import { fetchTypes, updateSelected, fetchImageLinks } from 'actions/selector';
-import styles from './scss/sample.scss';
+import styles from './scss/selector.scss';
 
 const cx = classNames.bind(styles);
 
@@ -21,6 +21,7 @@ class SelectorContainer extends Component {
       return (
         <Button
           key={id}
+          className={cx('selector__button')}
           buttonText={totalList[id]}
           onClick={() => {
               dispatch(updateSelected(id));
@@ -32,14 +33,15 @@ class SelectorContainer extends Component {
   }
   render() {
     const { selectedData, totalList, imageLinks } = this.props;
-    console.log('i', imageLinks)
-    console.log('s', selectedData)
     const selected = totalList[selectedData];
     const buttons = this.getButtons();
     return (
       <div className={cx('sample-container')}>
-        <h1>Selected breed: {selected}</h1>
-        {buttons}
+        <h1>Dogs!</h1>
+        <input type="text" name="fname" placeholder="Search" />
+        <div className={cx('selector__container')}>
+          {buttons}
+        </div>
         <ImageList imageLinks={imageLinks} />
 
       </div>

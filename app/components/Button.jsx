@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import classNames from 'classnames/bind';
-import styles from './scss/sample';
+import styles from './scss/button';
 const cx = classNames.bind(styles);
 
 export default class Sample extends Component {
@@ -21,8 +21,8 @@ export default class Sample extends Component {
   render() {
     const { buttonText } = this.props;
     return (
-      <div className={cx('sample')}>
-        <button className={cx('sample__button')} onClick={this.handleClick}>{buttonText}</button>
+      <div className={cx('selector__button__container')}>
+        <button className={cx('selector__button')} onClick={this.handleClick}>{buttonText}</button>
       </div>
     );
   }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import classNames from 'classnames/bind';
-import styles from './scss/sample';
+import styles from './scss/image-list';
 const cx = classNames.bind(styles);
 
 export default class ImageLinks extends Component {
@@ -16,7 +16,7 @@ export default class ImageLinks extends Component {
     else if (imageLinks.length === 0) return <div>No Images</div>;
     return imageLinks.map((link) => {
       return (
-        <img src={`${link}`} alt="dog" />
+        <img className={cx('imagelist__image')} src={`${link}`} alt="dog" />
       );
     });
   }
@@ -24,7 +24,7 @@ export default class ImageLinks extends Component {
   render() {
     const images = this.getImages();
     return (
-      <div>
+      <div className={cx('imagelist__container')}>
         {images}
       </div>
     );

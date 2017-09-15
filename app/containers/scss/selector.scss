@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+.sample-container {
+  height: 100%;
+}
+h1 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 200;
+  color: #6f69ff
+}
+.selector__container {
+  column-count: 4;
+  width: 100%;
+}
+.selector__button {
+  background-color: #f1f1f1;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 5px;
+  height: 30px;
+  border-radius: 5px;
+  padding: 5;
+  border: none;
+}
+.selector__button-selected{
+
+}
+// #a283ff light
+// #594eff dark
