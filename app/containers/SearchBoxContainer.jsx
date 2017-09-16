@@ -13,28 +13,26 @@ const cx = classNames.bind(styles);
 class SearchBoxContainer extends Component {
   throttle(func, limit) {
     let inThrottle, timeoutCall, lastRan;
-    let throttledFunc = (...args) => {
-      func.apply(this, args)
-    }
+    const throttledFunc = (...args) => {
+      func.apply(this, args);
+    };
     return (...args) => {
-      let context = this
       if (!inThrottle) {
-        throttledFunc(...args)
-        lastRan = Date.now()
+        throttledFunc(...args);
+        lastRan = Date.now();
         inThrottle = true;
       } else {
-        clearTimeout(timeoutCall)
+        clearTimeout(timeoutCall);
         timeoutCall = setTimeout(() => {
-            throttledFunc(...args);
-            lastRan = Date.now()
-          }, limit)
-
+          throttledFunc(...args);
+          lastRan = Date.now();
+        }, limit);
       }
     };
-  };
-  throttledFilter(){
-    const { searchFiltering } = this.props
-    return this.throttle(searchFiltering, 200)
+  }
+  throttledFilter() {
+    const { searchFiltering } = this.props;
+    return this.throttle(searchFiltering, 200);
   }
   render() {
     return (
