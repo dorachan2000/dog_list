@@ -52,11 +52,11 @@ export const fetchImageLinks = id => (dispatch, getState) => {
       dispatch(updateImgLinks(json.message));
     });
 };
-export const searchFiltering = (text) => (dispatch, getState) => {
-  const totalList = getState().selector.totalList
+export const searchFiltering = text => (dispatch, getState) => {
+  const totalList = getState().selector.totalList;
   const newList = totalList
     .filter(word => word.indexOf(text) !== -1)
     .slice(0, MAX_NUM_BUTTONS)
-    .map((name, i) => totalList.indexOf(name))
+    .map(name => totalList.indexOf(name));
   dispatch(updateCurList(newList));
-}
+};
