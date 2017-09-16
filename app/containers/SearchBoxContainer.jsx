@@ -11,13 +11,37 @@ import styles from './scss/selector.scss';
 const cx = classNames.bind(styles);
 
 class SearchBoxContainer extends Component {
-  deployFiltering(){
-    console.log('hello')
+  throttle(func, limit) {
+    let inThrottle, timeoutCall, lastRan;
+    let throttledFunc = (...args) => {
+      func.apply(this, args)
+    }
+    return (...args) => {
+      let context = this
+      if (!inThrottle) {
+        throttledFunc(...args)
+        lastRan = Date.now()
+        inThrottle = true;
+      } else {
+        clearTimeout(timeoutCall)
+        timeoutCall = setTimeout(() => {
+            throttledFunc(...args);
+            lastRan = Date.now()
+          }, limit)
+
+      }
+    };
+  };
+  throttledFilter(){
+    const { searchFiltering } = this.props
+    return this.throttle(searchFiltering, 200)
   }
   render() {
-    const { selectedData, totalList, imageLinks, className } = this.props;
     return (
-      <SearchBox className={cx('selector__searchbox')} />
+      <SearchBox
+        className={cx('selector__searchbox')}
+        onChange={this.throttledFilter()}
+      />
     );
   }
 }
@@ -25,23 +49,13 @@ class SearchBoxContainer extends Component {
 SearchBoxContainer.PropTypes = {
   imageLinks: PropTypes.array,
 };
-
 function mapStateToProps(state) {
   return {
     totalList: state.selector.totalList,
   };
 }
-
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     updateTitleAction: () => {
-//       dispatch(sampleActions.updateTitle('This is a different title'));
-//     },
-//   };
-// }
-
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ }, dispatch);
+  return bindActionCreators({ searchFiltering }, dispatch);
 }
-// export default connect(mapStateToProps, mapDispatchToProps)(SearchBoxContainer);
-export default connect(mapStateToProps)(SearchBoxContainer);
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBoxContainer);

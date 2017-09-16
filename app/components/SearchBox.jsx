@@ -8,11 +8,16 @@ import searchIcon from './images/search.svg';
 const cx = classNames.bind(styles);
 
 export default (props) => {
-  const { className } = props;
+  const { className, onChange } = props;
   return (
     <div className={className}>
       <div className="selector__searchbutton" />
-      <input className="selector__searchtextbox" type="text" name="fname" placeholder="Search" />
+      <input
+        className="selector__searchtextbox"
+        type="text"
+        placeholder="Search"
+        onChange={(e)=>{onChange(e.target.value)}}
+      />
     </div>
   );
 };
