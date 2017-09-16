@@ -1,5 +1,7 @@
-.selector__button {
-  background-color: #f1f1f1;
+$primary-button-color: #f1f1f1;
+$selected-button-color: linear-gradient(to right, #a283ff, #594eff);
+
+@mixin button-style(){ 
   box-sizing: border-box;
   width: 100%;
   margin: 5px;
@@ -8,14 +10,12 @@
   padding: 5;
   border: none;
 }
+.selector__button {
+  @include button-style();
+  background-color: $primary-button-color;
+}
 .selector__button-selected {
-  background: linear-gradient(to right, #a283ff, #594eff);
-  box-sizing: border-box;
+  @include button-style();
+  background: $selected-button-color;
   color: white;
-  width: 100%;
-  margin: 5px;
-  height: 30px;
-  border-radius: 5px;
-  padding: 5;
-  border: none;
 }
