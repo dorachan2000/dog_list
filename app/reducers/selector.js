@@ -3,12 +3,6 @@ import { UPDATE_ENTIRE_LIST,
          UPDATE_SELECTED,
          UPDATE_IMG_LINKS } from 'actions/selector';
 
-const MAX_NUM_BUTTONS = 12;
-const getPartialList = (totalList) => {
-  return totalList
-    .slice(0, MAX_NUM_BUTTONS)
-    .map((name, i) => i);
-};
 const data = (
   state = {
     totalList: [],
@@ -27,7 +21,7 @@ const data = (
     case UPDATE_CURRENT_LIST:
       return {
         ...state,
-        curList: getPartialList(state.totalList),
+        curList: action.types.slice(),
       };
     case UPDATE_SELECTED:
       return {
