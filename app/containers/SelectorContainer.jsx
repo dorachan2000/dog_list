@@ -17,12 +17,16 @@ class SelectorContainer extends Component {
     dispatch(fetchTypes());
   }
   getButtons() {
-    const { curList, totalList, dispatch } = this.props;
+    const { curList, totalList, dispatch, selectedData} = this.props;
+
     return curList.map((id) => {
+      const selected = selectedData === id;
       return (
         <Button
           key={id}
-          className={cx('selector__button')}
+          className={
+            selected ? cx('selector__button-selected') : cx('selector__button')
+          }
           buttonText={totalList[id]}
           onClick={() => {
               dispatch(updateSelected(id));

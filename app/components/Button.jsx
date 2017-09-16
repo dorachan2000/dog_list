@@ -19,11 +19,9 @@ export default class Sample extends Component {
   }
 
   render() {
-    const { buttonText } = this.props;
+    const { buttonText, className } = this.props;
     return (
-      <div className={cx('selector__button__container')}>
-        <button className={cx('selector__button')} onClick={this.handleClick}>{buttonText}</button>
-      </div>
+      <button className={className} onClick={this.handleClick}>{buttonText}</button>
     );
   }
 }

@@ -11,19 +11,6 @@ h1 {
   column-count: 4;
   width: 100%;
 }
-.selector__button {
-  background-color: #f1f1f1;
-  box-sizing: border-box;
-  width: 100%;
-  margin: 5px;
-  height: 30px;
-  border-radius: 5px;
-  padding: 5;
-  border: none;
-}
-.selector__button-selected{
-
-}
 
 .selector__nav {
   // display: inline-block;
@@ -38,7 +25,4 @@ h1 {
 .selector__searchbox {
   display: flex;
   align-items: center;
-
 }
-// #a283ff light
-// #594eff dark
