@@ -5,25 +5,24 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { searchFiltering } from 'actions/selector';
+import SearchBox from 'components/SearchBox'
 import styles from './scss/selector.scss';
 
 const cx = classNames.bind(styles);
 
-class SearchBox extends Component {
+class SearchBoxContainer extends Component {
   deployFiltering(){
     console.log('hello')
   }
   render() {
-    const { selectedData, totalList, imageLinks } = this.props;
+    const { selectedData, totalList, imageLinks, className } = this.props;
     return (
-      <div className={cx('searchbox')}>
-        <input type="text" name="fname" placeholder="Search" onChange={this.deployFiltering} />
-      </div>
+      <SearchBox className={cx('selector__searchbox')} />
     );
   }
 }
 
-SearchBox.PropTypes = {
+SearchBoxContainer.PropTypes = {
   imageLinks: PropTypes.array,
 };
 
@@ -44,5 +43,5 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ }, dispatch);
 }
-// export default connect(mapStateToProps, mapDispatchToProps)(SearchBox);
-export default connect(mapStateToProps)(SearchBox);
+// export default connect(mapStateToProps, mapDispatchToProps)(SearchBoxContainer);
+export default connect(mapStateToProps)(SearchBoxContainer);

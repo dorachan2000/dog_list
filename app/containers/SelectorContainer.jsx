@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import Button from 'components/Button';
 import ImageList from 'components/ImageList'
-import SearchBox from 'containers/SearchBox'
+import SearchBoxContainer from 'containers/SearchBoxContainer'
 import { fetchTypes, updateSelected, fetchImageLinks } from 'actions/selector';
 import styles from './scss/selector.scss';
 
@@ -39,8 +39,8 @@ class SelectorContainer extends Component {
     return (
       <div className={cx('sample-container')}>
         <div className={cx('selector__nav')}>
-          <h1>Dogs!</h1>
-          <SearchBox />
+          <h1 className={cx('selector__title')}>Dogs!</h1>
+          <SearchBoxContainer />
         </div>
         <div className={cx('selector__container')}>
           {buttons}
