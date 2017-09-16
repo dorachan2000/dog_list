@@ -1,6 +1,20 @@
-.imagelist__container {
-  column-count: 4;
-  width: 100%;
+@media screen and (min-width: 280px){
+  .imagelist__container {
+    column-count: 1;
+    width: 100%;
+  }
+}
+@media screen and (min-width: 760px){
+  .imagelist__container {
+    column-count: 2;
+    width: 100%;
+  }
+}
+@media screen and (min-width: 980px){
+  .imagelist__container {
+    column-count: 4;
+    width: 100%;
+  }
 }
 .imagelist__image {
   width: 100%;

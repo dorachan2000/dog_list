@@ -7,11 +7,32 @@ h1 {
   font-weight: 200;
   color: #6f69ff
 }
-.selector__container {
-  column-count: 4;
-  width: 100%;
+
+@media screen and (min-width: 280px){
+  .selector__container {
+    column-count: 1;
+    width: 100%;
+  }
+}
+@media screen and (min-width: 760px){
+  .selector__container {
+    column-count: 2;
+    width: 100%;
+  }
+}
+@media screen and (min-width: 980px){
+  .selector__container {
+    column-count: 4;
+    width: 100%;
+  }
 }
 
+// @media (min-height: 200px){
+//   .selector__container {
+//     column-count: 2;
+//     width: 100%;
+//   }
+// }
 .selector__nav {
   // display: inline-block;
   display: flex;
